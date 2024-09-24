@@ -77,7 +77,8 @@ function ZapLib:Create(options)
 		UI["2"]["Name"] = [[Main]];
 		
 		UI["ui"] = Instance.new("UISizeConstraint", UI["2"])
-		UI["ui"].MinSize = Vector2.new(522,0)
+		UI["ui"].MinSize = Vector2.new(522,332)
+		UI["ui"].MaxSize = Vector2.new(522,332)
 		
 		-- StarterGui.ZapUIL.Main.Toolbar
 		UI["3"] = Instance.new("Frame", UI["1"]);
