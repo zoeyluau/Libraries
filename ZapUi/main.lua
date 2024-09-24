@@ -1,9 +1,9 @@
 --[[
 
-don't mind my shitty coding - zoe
-"zap" ui lib for roblox
+wow - zoe
+fucking shit uiconstraint stuff.
 
-]]--
+]]
 
 -- [ Variables ] --
 local players = game:GetService("Players")
@@ -19,6 +19,7 @@ local ZapLib = {}
 UI = {}
 
 local tweenInfo = TweenInfo.new(.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out)
+local view = workspace.CurrentCamera.ViewportSize
 
 -- [ Functions ] --
 function ZapLib:SetDefaults(defaults, options)
@@ -74,6 +75,9 @@ function ZapLib:Create(options)
 		UI["2"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 		UI["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 		UI["2"]["Name"] = [[Main]];
+		
+		UI["ui"] = Instance.new("UISizeConstraint", UI["2"])
+		UI["ui"].MinSize = Vector2.new(522,0)
 		
 		-- StarterGui.ZapUIL.Main.Toolbar
 		UI["3"] = Instance.new("Frame", UI["1"]);
@@ -203,7 +207,7 @@ function ZapLib:Create(options)
 			local delta = input.Position - dragStart
 			local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 			ZapLib:Tween(root, {Position = position})
-			ZapLib:Tween(limbs, {Position = position + UDim2.new(0,195+36,0,195-30)})
+			ZapLib:Tween(limbs, {Position = position + UDim2.new(0,195+36,0,tonumber(limbs.AbsoluteSize.Y)/2)})
 		end
 
 		root.InputBegan:Connect(function(input)
